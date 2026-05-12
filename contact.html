@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/gold.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Get in touch with the Millionaire Odds team. Send feedback, report a bug, or ask a question about the millionaire probability calculator."
+    />
+    <meta
+      name="keywords"
+      content="contact Millionaire Odds, wealth calculator feedback, financial tool support"
+    />
+    <meta name="author" content="Millionaire Odds" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://millionaireodds.com/contact.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Contact — Millionaire Odds" />
+    <meta
+      property="og:description"
+      content="Have a question or feedback? Reach out to the Millionaire Odds team."
+    />
+    <meta
+      property="og:url"
+      content="https://millionaireodds.com/contact.html"
+    />
+    <meta
+      property="og:image"
+      content="https://millionaireodds.com/og-image.jpg"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact — Millionaire Odds" />
+    <meta
+      name="twitter:description"
+      content="Have a question or feedback? Reach out to the Millionaire Odds team."
+    />
+    <meta
+      name="twitter:image"
+      content="https://millionaireodds.com/og-image.jpg"
+    />
+    <title>Contact — Millionaire Odds</title>
+    <link rel="stylesheet" href="shared.css" />
+    <script src="theme.js"></script>
+  </head>
+  <body>
+    <nav>
+      <!-- <a href="index.html" class="nav-logo">🪙 Millionaire Odds</a> -->
+      <a href="index.html" class="nav-logo">🪙 Millionaire Odds</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Calculator</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </div>
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        onclick="toggleTheme()"
+        title="Toggle theme"
+      >
+        🌙
+      </button>
+    </nav>
+    <div class="nav-divider"></div>
+
+    <header>
+      <p class="page-title">Get in Touch</p>
+      <p class="subtitle">We read every message</p>
+      <div class="gold-line"></div>
+    </header>
+
+    <div class="container">
+      <div class="content-card">
+        <h2>Send us a message</h2>
+        <p>
+          Have a question about how the calculator works, spotted a bug, or want
+          to suggest an improvement? Fill in the form below and we'll get back
+          to you.
+        </p>
+
+        <div class="section-divider"></div>
+
+        <div id="contactForm">
+          <div class="cf-field">
+            <label>Your Name</label>
+            <input
+              type="text"
+              id="cf-name"
+              placeholder="e.g. Amina Yemisi Azikiwe"
+            />
+          </div>
+
+          <div class="cf-field">
+            <label>Email Address</label>
+            <input type="email" id="cf-email" placeholder="you@example.com" />
+          </div>
+
+          <div class="cf-field">
+            <label>Subject</label>
+            <select id="cf-subject">
+              <option value="">— Select a topic —</option>
+              <option value="general">General Question</option>
+              <option value="methodology">Calculator Methodology</option>
+              <option value="bug">Bug Report</option>
+              <option value="suggestion">Feature Suggestion</option>
+              <option value="press">Press / Media Enquiry</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="cf-field">
+            <label>Message</label>
+            <textarea
+              id="cf-message"
+              placeholder="Your message here…"
+            ></textarea>
+          </div>
+
+          <button class="btn btn-full" onclick="submitForm()">
+            Send Message →
+          </button>
+        </div>
+
+        <div class="success-msg" id="successMsg">
+          ✦ Message received — thank you! We'll be in touch within 2 business
+          days.
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h2>Other ways to reach us</h2>
+        <p>
+          For urgent enquiries or press requests, you can also reach the team
+          directly at
+          <a href="mailto:hello@millionaireodds.com"
+            >hello@millionaireodds.com</a
+          >.
+        </p>
+        <p>
+          Before writing in, it's worth checking the
+          <a href="faq.html">FAQ page</a> — most common questions about the
+          calculator methodology are answered there.
+        </p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      © Millionaire Odds — For entertainment &amp; inspiration only
+    </footer>
+
+    <script>
+      function submitForm() {
+        const name = document.getElementById("cf-name").value.trim();
+        const email = document.getElementById("cf-email").value.trim();
+        const subject = document.getElementById("cf-subject").value;
+        const message = document.getElementById("cf-message").value.trim();
+
+        if (!name || !email || !subject || !message) {
+          alert("Please fill in all fields before sending.");
+          return;
+        }
+
+        const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRe.test(email)) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+
+        // In a real deployment, we'd POST to a backend or service like Formspree here.
+        // For now, we simulate success.
+        document.getElementById("contactForm").style.display = "none";
+        const msg = document.getElementById("successMsg");
+        msg.style.display = "block";
+      }
+    </script>
+  </body>
+</html>

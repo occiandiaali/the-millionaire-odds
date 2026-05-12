@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/gold.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Answers to common questions about how Millionaire Odds calculates millionaire probability, what the scores mean, and how to improve your wealth potential."
+    />
+    <meta
+      name="keywords"
+      content="wealth calculator FAQ, millionaire probability explained, how wealth score works, financial calculator methodology"
+    />
+    <meta name="author" content="Millionaire Odds" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://millionaireodds.com/faq.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="FAQ — Millionaire Odds" />
+    <meta
+      property="og:description"
+      content="How does Millionaire Odds calculate your millionaire probability? All your questions about the methodology, scores, and results answered here."
+    />
+    <meta property="og:url" content="https://millionaireodds.com/faq.html" />
+    <meta
+      property="og:image"
+      content="https://millionaireodds.com/og-image.jpg"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FAQ — Millionaire Odds" />
+    <meta
+      name="twitter:description"
+      content="How does Millionaire Odds calculate your millionaire probability? All your questions answered."
+    />
+    <meta
+      name="twitter:image"
+      content="https://millionaireodds.com/og-image.jpg"
+    />
+    <title>FAQ — Millionaire Odds</title>
+    <link rel="stylesheet" href="shared.css" />
+    <script src="theme.js"></script>
+  </head>
+  <body>
+    <nav>
+      <!-- <a href="index.html" class="nav-logo">🪙 Millionaire Odds</a> -->
+      <a href="index.html" class="nav-logo">🪙 Millionaire Odds</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Calculator</a>
+        <a href="faq.html" class="nav-link active">FAQ</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        onclick="toggleTheme()"
+        title="Toggle theme"
+      >
+        🌙
+      </button>
+    </nav>
+    <div class="nav-divider"></div>
+
+    <header>
+      <p class="page-title">Frequently Asked Questions</p>
+      <p class="subtitle">Everything you need to know</p>
+      <div class="gold-line"></div>
+    </header>
+
+    <div class="container">
+      <div class="content-card">
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            How does Millionaire Odds calculate my probability?
+          </button>
+          <div class="faq-a">
+            Millionaire Odds uses a weighted scoring engine that evaluates 14
+            factors shown to correlate with wealth accumulation in economic
+            research — including age, income, savings rate, investing behaviour,
+            industry, entrepreneurial activity, and social capital. Each factor
+            is scored and combined into an overall profile score (0–100), which
+            is then passed through a logistic probability curve calibrated
+            against real-world millionaire base rates (~8% of US adults). The
+            result is an illustrative probability estimate, not a statistically
+            certified forecast.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Is this actually accurate?
+          </button>
+          <div class="faq-a">
+            It's a well-reasoned estimate, not a certified prediction. The
+            factors and weightings are grounded in personal finance research
+            (e.g. the role of savings rate, compound investing,
+            entrepreneurship), but individual outcomes depend heavily on luck,
+            macro-economic conditions, health, and countless variables no
+            calculator can fully capture. Use this as a motivational mirror, not
+            a guarantee — or a death sentence.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            What does "Years to $1M" mean?
+          </button>
+          <div class="faq-a">
+            This is a compound-growth simulation. We take your approximate
+            current net worth and annual savings (derived from your income and
+            savings rate selections), apply a risk-adjusted annual return
+            assumption (ranging from ~7% for low-risk to ~15% for very high-risk
+            profiles), and simulate year-by-year growth until the portfolio
+            crosses $1,000,000. If your savings rate is zero or the milestone
+            would take over 100 years, we display "N/A."
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Why is the billionaire probability so low?
+          </button>
+          <div class="faq-a">
+            Because it genuinely is. There are roughly 2,700 billionaires in a
+            world of 8 billion people — a base rate of about 0.00003%. Even the
+            most optimised profile on Millionaire Odds only reaches a few
+            percent, which is still an astronomically elevated probability
+            relative to the global average. The bar is calibrated to reflect
+            reality.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Does my country really affect my chances?
+          </button>
+          <div class="faq-a">
+            Significantly. Countries with deep capital markets, strong rule of
+            law, lower corruption, and large consumer economies (e.g. the US,
+            Singapore, UAE) provide far more infrastructure for wealth creation
+            — access to venture capital, liquid stock markets, business-friendly
+            regulation, and a culture of entrepreneurship. That said, emerging
+            markets like Nigeria and India have produced extraordinary self-made
+            wealth, particularly in technology, manufacturing, and trade. The
+            country factor in our model reflects opportunity density, not
+            individual destiny.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Can I improve my score?
+          </button>
+          <div class="faq-a">
+            Absolutely — that's partly the point. The biggest levers under your
+            direct control are: increasing your savings rate, starting or
+            growing a business, improving your investing diversification,
+            building a high-value professional network, and increasing your
+            financial literacy. Age and family background are fixed inputs, but
+            they're smaller factors than behaviour and strategy.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Do you store my answers or personal data?
+          </button>
+          <div class="faq-a">
+            No. All calculations happen entirely in your browser — nothing is
+            sent to a server, stored in a database, or associated with your
+            identity. See our <a href="privacy.html">Privacy Policy</a> for full
+            details.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Is this financial advice?
+          </button>
+          <div class="faq-a">
+            No. Millionaire Odds is an entertainment and educational tool.
+            Nothing on this site constitutes financial, investment, legal, or
+            tax advice. Please consult a qualified financial advisor before
+            making any significant financial decisions.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            Why does entrepreneurship score so highly?
+          </button>
+          <div class="faq-a">
+            Because the data supports it. The overwhelming majority of self-made
+            millionaires and virtually all self-made billionaires built their
+            wealth through business ownership rather than employment alone.
+            Salary income is capped by hours and market rates; equity in a
+            growing business is not. We weight entrepreneurship heavily because
+            it genuinely is the highest-upside path, though it also carries the
+            highest variance and risk of failure.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggle(this)">
+            I got a low score — should I be discouraged?
+          </button>
+          <div class="faq-a">
+            Not at all. A low score reflects your current snapshot, not your
+            ceiling. The most valuable thing a tool like this can do is identify
+            gaps — and almost every gap in the scoring model is something you
+            can actively work on. The most common paths to improvement: increase
+            income through skills or career moves, start saving aggressively,
+            begin investing, and seek out mentors or communities of
+            high-achievers. Many of the world's wealthiest people started from
+            very low scores.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      © Millionaire Odds — For entertainment &amp; inspiration only
+    </footer>
+
+    <script>
+      function toggle(btn) {
+        const answer = btn.nextElementSibling;
+        const isOpen = btn.classList.contains("open");
+        // Close all
+        document.querySelectorAll(".faq-q.open").forEach((b) => {
+          b.classList.remove("open");
+          b.nextElementSibling.classList.remove("open");
+        });
+        // Open clicked if it was closed
+        if (!isOpen) {
+          btn.classList.add("open");
+          answer.classList.add("open");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,1095 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/assets/gold.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Find out your probability of becoming a millionaire or billionaire. Enter your age, income, savings rate, and lifestyle factors to get your personalised wealth forecast."
+    />
+    <meta
+      name="keywords"
+      content="millionaire calculator, wealth predictor, will I be rich, billionaire probability, net worth calculator, financial future calculator, wealth score, savings calculator"
+    />
+    <meta name="author" content="Millionaire Odds" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://millionaireodds.com/" />
+
+    <!-- Open Graph (Facebook, LinkedIn previews) -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Millionaire Odds — Will You Be a Millionaire?"
+    />
+    <meta
+      property="og:description"
+      content="Answer 14 questions and discover your personalised probability of becoming a millionaire or billionaire. Free, instant, and surprisingly honest."
+    />
+    <meta property="og:url" content="https://millionaireodds.com/" />
+    <meta
+      property="og:image"
+      content="https://millionaireodds.com/og-image.jpg"
+    />
+
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Millionaire Odds — Will You Be a Millionaire?"
+    />
+    <meta
+      name="twitter:description"
+      content="Answer 14 questions and discover your personalised probability of becoming a millionaire or billionaire. Free, instant, and surprisingly honest."
+    />
+    <meta
+      name="twitter:image"
+      content="https://millionaireodds.com/og-image.jpg"
+    />
+    <title>Millionaire Odds — Will You Be a Millionaire?</title>
+    <link rel="stylesheet" href="shared.css" />
+    <script src="theme.js"></script>
+    <style>
+      /* ── Index-only styles ── */
+      .form-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        padding: 2.5rem 2.8rem;
+        margin-top: 2rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .form-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.4rem 2rem;
+      }
+
+      .field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.45rem;
+      }
+      .field.full {
+        grid-column: 1 / -1;
+      }
+
+      label {
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold-dim);
+        font-weight: 500;
+      }
+
+      input,
+      select {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        color: var(--text);
+        font-family: "DM Mono", monospace;
+        font-size: 0.88rem;
+        padding: 0.65rem 0.85rem;
+        border-radius: 2px;
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+        -webkit-appearance: none;
+        appearance: none;
+      }
+
+      input:focus,
+      select:focus {
+        border-color: var(--gold);
+        box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.12);
+      }
+
+      select option {
+        background: var(--bg3);
+      }
+
+      input[type="range"] {
+        padding: 0;
+        height: 4px;
+        background: var(--bg3);
+        border: none;
+        cursor: pointer;
+        accent-color: var(--gold);
+      }
+
+      .range-row {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+      }
+
+      .range-val {
+        color: var(--gold);
+        font-size: 0.85rem;
+        min-width: 2.5rem;
+        text-align: right;
+      }
+
+      .section-label {
+        font-family: "Playfair Display", serif;
+        font-size: 0.82rem;
+        color: var(--gold);
+        letter-spacing: 0.06em;
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 0.4rem;
+        margin-bottom: 1rem;
+        grid-column: 1 / -1;
+      }
+
+      .btn-submit {
+        display: block;
+        width: 100%;
+        margin-top: 2rem;
+        padding: 1rem;
+        background: var(--gold);
+        color: #0a0a08;
+        font-family: "DM Mono", monospace;
+        font-size: 0.82rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 500;
+        border: none;
+        cursor: pointer;
+        border-radius: 2px;
+        transition:
+          background 0.2s,
+          transform 0.1s,
+          box-shadow 0.2s;
+      }
+
+      .btn-submit:hover {
+        background: var(--gold-light);
+        box-shadow: 0 0 28px rgba(201, 168, 76, 0.35);
+      }
+
+      .btn-submit:active {
+        transform: scale(0.99);
+      }
+
+      /* Results */
+      #results {
+        display: none;
+        margin-top: 2rem;
+        animation: fadeUp 0.5s ease both;
+      }
+
+      .result-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        padding: 2.2rem 2.8rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .result-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gold),
+          transparent
+        );
+      }
+
+      .verdict {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .verdict-emoji {
+        font-size: 3rem;
+        display: block;
+        margin-bottom: 0.5rem;
+        animation: pulse 2.5s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+      }
+
+      .verdict-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.4rem, 4vw, 2rem);
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      .verdict-title.high {
+        color: var(--gold-light);
+      }
+      .verdict-title.mid {
+        color: #d4aa55;
+      }
+      .verdict-title.low {
+        color: var(--text-dim);
+      }
+
+      .prob-section {
+        margin-bottom: 1.8rem;
+      }
+
+      .prob-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.9rem;
+      }
+
+      .prob-label {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        width: 90px;
+        flex-shrink: 0;
+      }
+
+      .bar-wrap {
+        flex: 1;
+        height: 6px;
+        background: var(--bg3);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+
+      .bar-fill {
+        height: 100%;
+        border-radius: 3px;
+        width: 0%;
+        transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .bar-fill.millionaire {
+        background: linear-gradient(90deg, var(--gold-dim), var(--gold-light));
+      }
+      .bar-fill.billionaire {
+        background: linear-gradient(90deg, #2a6a4a, var(--green));
+      }
+
+      .prob-pct {
+        font-size: 0.88rem;
+        color: var(--gold);
+        min-width: 3.5rem;
+        text-align: right;
+        font-weight: 500;
+      }
+
+      .prob-pct.billionaire {
+        color: var(--green);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-bottom: 1.8rem;
+      }
+
+      .stat-box {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 2px;
+        padding: 1rem 1.2rem;
+      }
+
+      .stat-label {
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text-dim);
+        margin-bottom: 0.3rem;
+      }
+
+      .stat-val {
+        font-family: "Playfair Display", serif;
+        font-size: 1.15rem;
+        color: var(--gold);
+      }
+
+      .factors {
+        margin-bottom: 1.5rem;
+      }
+
+      .factors-title {
+        font-size: 0.68rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold-dim);
+        margin-bottom: 0.8rem;
+      }
+
+      .factor-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+        font-size: 0.78rem;
+        color: var(--text-dim);
+        line-height: 1.5;
+        margin-bottom: 0.4rem;
+      }
+
+      .factor-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        margin-top: 0.45rem;
+        flex-shrink: 0;
+      }
+
+      .factor-dot.pos {
+        background: var(--gold);
+      }
+      .factor-dot.neg {
+        background: var(--red);
+      }
+      .factor-dot.neu {
+        background: var(--text-dim);
+      }
+
+      .disclaimer {
+        text-align: center;
+        font-size: 0.65rem;
+        color: var(--text-dim);
+        opacity: 0.6;
+        border-top: 1px solid var(--border);
+        padding-top: 1.2rem;
+        line-height: 1.6;
+      }
+
+      @media (max-width: 540px) {
+        .form-card {
+          padding: 1.8rem 1.4rem;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .field.full {
+          grid-column: 1;
+        }
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+        .result-card {
+          padding: 1.8rem 1.4rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <!-- <a href="index.html" class="nav-logo">🪙 Millionaire Odds</a> -->
+      <a href="index.html" class="nav-logo">🪙 Millionaire Odds</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Calculator</a>
+        <a href="faq.html" class="nav-link">FAQ</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </div>
+      <button
+        class="theme-toggle"
+        id="themeToggle"
+        onclick="toggleTheme()"
+        title="Toggle theme"
+      >
+        🌙
+      </button>
+    </nav>
+    <div class="nav-divider"></div>
+
+    <header>
+      <div class="coin-icon">🪙</div>
+      <!-- <h1>Millionaire Odds</h1> -->
+      <h1>Millionaire Odds</h1>
+      <p class="subtitle">Your Millionaire &amp; Billionaire Probability</p>
+      <div class="gold-line"></div>
+    </header>
+
+    <div class="container">
+      <div class="form-card">
+        <div class="form-grid">
+          <div class="section-label">Personal Profile</div>
+
+          <div class="field">
+            <label>Age</label>
+            <input
+              type="number"
+              id="age"
+              min="10"
+              max="80"
+              placeholder="e.g. 27"
+            />
+          </div>
+
+          <div class="field">
+            <label>Country</label>
+            <select id="country">
+              <option value="">— Select —</option>
+              <option value="us">United States</option>
+              <option value="uk">United Kingdom</option>
+              <option value="ca">Canada</option>
+              <option value="au">Australia</option>
+              <option value="de">Germany</option>
+              <option value="fr">France</option>
+              <option value="ng">Nigeria</option>
+              <option value="in">India</option>
+              <option value="cn">China</option>
+              <option value="br">Brazil</option>
+              <option value="sg">Singapore</option>
+              <option value="ae">UAE</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Education</label>
+            <select id="education">
+              <option value="">— Select —</option>
+              <option value="highschool">High School</option>
+              <option value="some_college">Some College</option>
+              <option value="bachelors">Bachelor's Degree</option>
+              <option value="masters">Master's Degree</option>
+              <option value="phd">PhD / Doctorate</option>
+              <option value="mba">MBA</option>
+              <option value="dropout">Dropout / Self-taught</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Field / Industry</label>
+            <select id="industry">
+              <option value="">— Select —</option>
+              <option value="tech">Technology</option>
+              <option value="finance">Finance / Banking</option>
+              <option value="healthcare">Healthcare</option>
+              <option value="realestate">Real Estate</option>
+              <option value="entrepreneur">Entrepreneurship</option>
+              <option value="arts">Arts / Media / Sports</option>
+              <option value="law">Law</option>
+              <option value="education">Education</option>
+              <option value="trade">Skilled Trade</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="section-label">Financial Snapshot</div>
+
+          <div class="field">
+            <label>Current Net Worth (USD)</label>
+            <select id="networth">
+              <option value="">— Select —</option>
+              <option value="0">Under $0 (in debt)</option>
+              <option value="1">$0 – $10k</option>
+              <option value="2">$10k – $50k</option>
+              <option value="3">$50k – $200k</option>
+              <option value="4">$200k – $500k</option>
+              <option value="5">$500k – $1M</option>
+              <option value="6">$1M+</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Annual Income (USD)</label>
+            <select id="income">
+              <option value="">— Select —</option>
+              <option value="1">Under $20k</option>
+              <option value="2">$20k – $50k</option>
+              <option value="3">$50k – $100k</option>
+              <option value="4">$100k – $200k</option>
+              <option value="5">$200k – $500k</option>
+              <option value="6">$500k+</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label
+              >Monthly Savings Rate —
+              <span class="range-val" id="savingsVal">20%</span></label
+            >
+            <div class="range-row">
+              <span style="font-size: 0.7rem; color: var(--text-dim)">0%</span>
+              <input
+                type="range"
+                id="savings"
+                min="0"
+                max="80"
+                value="20"
+                step="5"
+              />
+              <span style="font-size: 0.7rem; color: var(--text-dim)">80%</span>
+            </div>
+          </div>
+
+          <div class="section-label">Mindset &amp; Habits</div>
+
+          <div class="field">
+            <label>Risk Tolerance</label>
+            <select id="risk">
+              <option value="">— Select —</option>
+              <option value="1">Very Low</option>
+              <option value="2">Low</option>
+              <option value="3">Moderate</option>
+              <option value="4">High</option>
+              <option value="5">Very High</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Entrepreneurial Intent</label>
+            <select id="entrepreneur">
+              <option value="">— Select —</option>
+              <option value="1">None — happy with a job</option>
+              <option value="2">Maybe someday</option>
+              <option value="3">Planning a side hustle</option>
+              <option value="4">Already have a business</option>
+              <option value="5">Serial entrepreneur</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Investing Activity</label>
+            <select id="investing">
+              <option value="">— Select —</option>
+              <option value="1">None</option>
+              <option value="2">Savings account only</option>
+              <option value="3">Index funds / ETFs</option>
+              <option value="4">Stocks + Real Estate</option>
+              <option value="5">Diversified portfolio + alternatives</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Financial Literacy</label>
+            <select id="literacy">
+              <option value="">— Select —</option>
+              <option value="1">Beginner</option>
+              <option value="2">Learning</option>
+              <option value="3">Intermediate</option>
+              <option value="4">Advanced</option>
+              <option value="5">Expert</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label
+              >Dependents (kids, family support) —
+              <span class="range-val" id="depsVal">0</span></label
+            >
+            <div class="range-row">
+              <span style="font-size: 0.7rem; color: var(--text-dim)">0</span>
+              <input
+                type="range"
+                id="dependents"
+                min="0"
+                max="8"
+                value="0"
+                step="1"
+              />
+              <span style="font-size: 0.7rem; color: var(--text-dim)">8+</span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Wealthy Mentor / Network</label>
+            <select id="network">
+              <option value="">— Select —</option>
+              <option value="1">No access</option>
+              <option value="2">Some professionals</option>
+              <option value="3">Good network</option>
+              <option value="4">Mentors &amp; investors</option>
+              <option value="5">Elite inner circle</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Family Wealth Background</label>
+            <select id="family">
+              <option value="">— Select —</option>
+              <option value="1">Poverty</option>
+              <option value="2">Working class</option>
+              <option value="3">Middle class</option>
+              <option value="4">Upper middle class</option>
+              <option value="5">Wealthy / Inherited</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-submit" onclick="calculate()">
+          Calculate My Wealth Potential →
+        </button>
+      </div>
+
+      <!-- Results -->
+      <div id="results">
+        <div class="result-card">
+          <div class="verdict">
+            <span class="verdict-emoji" id="verdictEmoji">💰</span>
+            <div class="verdict-title" id="verdictTitle"></div>
+          </div>
+
+          <div class="prob-section">
+            <div class="prob-row">
+              <span class="prob-label">Millionaire</span>
+              <div class="bar-wrap">
+                <div class="bar-fill millionaire" id="mBar"></div>
+              </div>
+              <span class="prob-pct" id="mPct">0%</span>
+            </div>
+            <div class="prob-row">
+              <span class="prob-label">Billionaire</span>
+              <div class="bar-wrap">
+                <div class="bar-fill billionaire" id="bBar"></div>
+              </div>
+              <span class="prob-pct billionaire" id="bPct">0%</span>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-box">
+              <div class="stat-label">Projected milestone age</div>
+              <div class="stat-val" id="milestoneAge">—</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Years to $1M (est.)</div>
+              <div class="stat-val" id="yearsTo">—</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Wealth-building score</div>
+              <div class="stat-val" id="wbScore">—</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Top wealth driver</div>
+              <div class="stat-val" id="topDriver">—</div>
+            </div>
+          </div>
+
+          <div class="factors">
+            <div class="factors-title">Key Factors in Your Assessment</div>
+            <div id="factorList"></div>
+          </div>
+
+          <div class="disclaimer">
+            This is a fun, educational estimate — not financial advice.<br />
+            Real wealth depends on countless variables, luck, and relentless
+            action.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      © Millionaire Odds — For entertainment &amp; inspiration only
+    </footer>
+
+    <script>
+      document.getElementById("savings").addEventListener("input", (e) => {
+        document.getElementById("savingsVal").textContent =
+          e.target.value + "%";
+      });
+      document.getElementById("dependents").addEventListener("input", (e) => {
+        document.getElementById("depsVal").textContent = e.target.value;
+      });
+
+      function getVal(id) {
+        return document.getElementById(id).value;
+      }
+
+      function calculate() {
+        const age = parseInt(getVal("age")) || 0;
+        const country = getVal("country");
+        const education = getVal("education");
+        const industry = getVal("industry");
+        const networth = parseInt(getVal("networth")) || 0;
+        const income = parseInt(getVal("income")) || 0;
+        const savings = parseInt(getVal("savings"));
+        const risk = parseInt(getVal("risk")) || 0;
+        const entrepr = parseInt(getVal("entrepreneur")) || 0;
+        const investing = parseInt(getVal("investing")) || 0;
+        const literacy = parseInt(getVal("literacy")) || 0;
+        const dependents = parseInt(getVal("dependents"));
+        const network = parseInt(getVal("network")) || 0;
+        const family = parseInt(getVal("family")) || 0;
+
+        if (
+          !age ||
+          !country ||
+          !education ||
+          !industry ||
+          getVal("networth") === "" ||
+          getVal("income") === "" ||
+          getVal("risk") === "" ||
+          getVal("entrepreneur") === "" ||
+          getVal("investing") === "" ||
+          getVal("literacy") === "" ||
+          getVal("network") === "" ||
+          getVal("family") === ""
+        ) {
+          alert("Please fill in all fields to get your wealth assessment.");
+          return;
+        }
+
+        let score = 0;
+        const factors = [];
+
+        const ageScore =
+          age < 18
+            ? 3
+            : age < 25
+              ? 8
+              : age < 35
+                ? 12
+                : age < 45
+                  ? 10
+                  : age < 55
+                    ? 7
+                    : age < 65
+                      ? 4
+                      : 2;
+        score += ageScore;
+        if (age < 30)
+          factors.push({
+            t: "pos",
+            m: `Young age (${age}) — decades of compounding ahead`,
+          });
+        else if (age > 55)
+          factors.push({
+            t: "neg",
+            m: `Shorter runway at age ${age}, but not impossible`,
+          });
+        else
+          factors.push({
+            t: "neu",
+            m: `Age ${age} — solid productive years remaining`,
+          });
+
+        const countryBonus = {
+          us: 14,
+          sg: 13,
+          ae: 13,
+          uk: 11,
+          ca: 11,
+          au: 11,
+          de: 10,
+          fr: 9,
+          cn: 9,
+          br: 6,
+          in: 7,
+          ng: 6,
+          other: 7,
+        };
+        score += countryBonus[country] || 7;
+        if (["us", "sg", "ae"].includes(country))
+          factors.push({
+            t: "pos",
+            m: "Based in a high-wealth-opportunity economy",
+          });
+        else if (["ng", "br", "in"].includes(country))
+          factors.push({
+            t: "neu",
+            m: "Emerging market — high growth, higher hustle required",
+          });
+
+        const eduBonus = {
+          highschool: 2,
+          some_college: 4,
+          bachelors: 6,
+          masters: 8,
+          phd: 7,
+          mba: 9,
+          dropout: 5,
+        };
+        score += eduBonus[education] || 0;
+        if (education === "mba")
+          factors.push({
+            t: "pos",
+            m: "MBA correlates strongly with executive income & networks",
+          });
+        if (education === "dropout")
+          factors.push({
+            t: "neu",
+            m: "Dropout — higher variance outcome, but precedents exist",
+          });
+
+        const indBonus = {
+          tech: 12,
+          finance: 11,
+          entrepreneur: 13,
+          realestate: 10,
+          healthcare: 8,
+          law: 8,
+          arts: 5,
+          education: 4,
+          trade: 6,
+          other: 5,
+        };
+        score += indBonus[industry] || 5;
+        if (industry === "entrepreneur")
+          factors.push({
+            t: "pos",
+            m: "Entrepreneurship is the #1 path to millionaire/billionaire status",
+          });
+        if (industry === "tech")
+          factors.push({
+            t: "pos",
+            m: "Tech sector produces outsized wealth relative to other fields",
+          });
+
+        score += networth * 1.8;
+        if (networth >= 5)
+          factors.push({
+            t: "pos",
+            m: "Already close to or at millionaire status — momentum is real",
+          });
+        if (networth === 0)
+          factors.push({
+            t: "neg",
+            m: "Starting from zero — disciplined saving critical now",
+          });
+
+        score += income * 2;
+        if (income >= 5)
+          factors.push({
+            t: "pos",
+            m: "High income creates the raw material for wealth accumulation",
+          });
+        if (income <= 2)
+          factors.push({
+            t: "neg",
+            m: "Low income — focus on increasing earning power first",
+          });
+
+        const savBonus =
+          savings < 5
+            ? 0
+            : savings < 15
+              ? 3
+              : savings < 30
+                ? 6
+                : savings < 50
+                  ? 9
+                  : 12;
+        score += savBonus;
+        if (savings >= 30)
+          factors.push({
+            t: "pos",
+            m: `Strong ${savings}% savings rate accelerates wealth building`,
+          });
+        if (savings < 10)
+          factors.push({
+            t: "neg",
+            m: `Low ${savings}% savings rate — wealth accumulation will be slow`,
+          });
+
+        score += risk * 2;
+        if (risk >= 4)
+          factors.push({
+            t: "pos",
+            m: "Higher risk tolerance enables higher-return investment strategies",
+          });
+        if (risk <= 1)
+          factors.push({
+            t: "neg",
+            m: "Very low risk tolerance limits wealth-multiplying opportunities",
+          });
+
+        score += entrepr * 2.5;
+        if (entrepr >= 4)
+          factors.push({
+            t: "pos",
+            m: "Active entrepreneurship drastically raises wealth ceiling",
+          });
+
+        score += investing * 2;
+        if (investing >= 4)
+          factors.push({
+            t: "pos",
+            m: "Diversified investing lets money work while you sleep",
+          });
+        if (investing <= 1)
+          factors.push({
+            t: "neg",
+            m: "Not investing — inflation erodes idle cash over time",
+          });
+
+        score += literacy * 1.5;
+        if (literacy >= 4)
+          factors.push({
+            t: "pos",
+            m: "High financial literacy — you know how money works",
+          });
+
+        const depPenalty = Math.min(dependents * 1.2, 6);
+        score -= depPenalty;
+        if (dependents >= 3)
+          factors.push({
+            t: "neg",
+            m: `${dependents} dependents increases expenses, reducing investable surplus`,
+          });
+
+        score += network * 2;
+        if (network >= 4)
+          factors.push({
+            t: "pos",
+            m: "Elite network opens doors unavailable to most people",
+          });
+        if (network <= 1)
+          factors.push({
+            t: "neg",
+            m: "Limited wealth network — consider actively building connections",
+          });
+
+        score += family * 1.5;
+        if (family >= 4)
+          factors.push({
+            t: "pos",
+            m: "Wealth background provides capital, mindset, and safety net",
+          });
+        if (family <= 2)
+          factors.push({
+            t: "neu",
+            m: "Modest background — self-made path is harder but very achievable",
+          });
+
+        score = Math.max(0, Math.min(100, score));
+
+        function logistic(x, center, steepness) {
+          return 1 / (1 + Math.exp(-steepness * (x - center)));
+        }
+
+        let millPct = logistic(score, 48, 0.1) * 75;
+        millPct = Math.max(1, Math.min(92, millPct));
+
+        let billPct = logistic(score, 78, 0.15) * 12;
+        billPct = Math.max(0.01, Math.min(12, billPct));
+        if (billPct >= millPct) billPct = millPct * 0.08;
+
+        const annualIncomeDollars =
+          [0, 15000, 35000, 75000, 150000, 350000, 600000][income] || 15000;
+        const annualSavings = annualIncomeDollars * (savings / 100);
+        const startWealth =
+          [0, 5000, 30000, 125000, 350000, 750000, 1200000][networth] || 0;
+        const annualReturn = 0.07 + (risk - 1) * 0.02;
+        let years = 0,
+          wealth = startWealth;
+        if (startWealth >= 1000000) {
+          years = 0;
+        } else if (annualSavings > 0) {
+          while (wealth < 1000000 && years < 100) {
+            wealth = wealth * (1 + annualReturn) + annualSavings;
+            years++;
+          }
+          if (years >= 100) years = null;
+        } else {
+          years = null;
+        }
+
+        const milestoneAge = years !== null ? age + years : null;
+
+        const drivers = [
+          { name: "Income", v: income * 2 },
+          { name: "Industry", v: indBonus[industry] || 5 },
+          { name: "Net Worth", v: networth * 1.8 },
+          { name: "Entrepreneur", v: entrepr * 2.5 },
+          { name: "Investing", v: investing * 2 },
+          { name: "Network", v: network * 2 },
+        ];
+        const topDriver = drivers.sort((a, b) => b.v - a.v)[0].name;
+
+        let verdictText, verdictClass, verdictEmoji;
+        if (millPct >= 60) {
+          verdictText = "Strong Millionaire Trajectory";
+          verdictClass = "high";
+          verdictEmoji = "💰";
+        } else if (millPct >= 35) {
+          verdictText = "Real Millionaire Potential";
+          verdictClass = "mid";
+          verdictEmoji = "📈";
+        } else if (millPct >= 15) {
+          verdictText = "Possible with Discipline & Strategy";
+          verdictClass = "mid";
+          verdictEmoji = "🎯";
+        } else {
+          verdictText = "Challenging — Significant Changes Needed";
+          verdictClass = "low";
+          verdictEmoji = "🧱";
+        }
+
+        document.getElementById("verdictEmoji").textContent = verdictEmoji;
+        const vt = document.getElementById("verdictTitle");
+        vt.textContent = verdictText;
+        vt.className = "verdict-title " + verdictClass;
+
+        setTimeout(() => {
+          document.getElementById("mBar").style.width =
+            millPct.toFixed(1) + "%";
+          document.getElementById("bBar").style.width =
+            Math.min(billPct * 8, 100).toFixed(1) + "%";
+        }, 100);
+
+        document.getElementById("mPct").textContent = millPct.toFixed(1) + "%";
+        document.getElementById("bPct").textContent = billPct.toFixed(3) + "%";
+        document.getElementById("milestoneAge").textContent = milestoneAge
+          ? milestoneAge <= age
+            ? "Already there!"
+            : `Age ${Math.round(milestoneAge)}`
+          : "> 100 yrs";
+        document.getElementById("yearsTo").textContent =
+          years === 0 ? "Already $1M+" : years ? `~${years} years` : "N/A";
+        document.getElementById("wbScore").textContent =
+          score.toFixed(0) + " / 100";
+        document.getElementById("topDriver").textContent = topDriver;
+
+        const fl = document.getElementById("factorList");
+        fl.innerHTML = "";
+        factors.slice(0, 7).forEach((f) => {
+          fl.innerHTML += `<div class="factor-item"><div class="factor-dot ${f.t}"></div><span>${f.m}</span></div>`;
+        });
+
+        const res = document.getElementById("results");
+        res.style.display = "block";
+        res.scrollIntoView({ behavior: "smooth", block: "start" });
+        res.style.animation = "none";
+        void res.offsetHeight;
+        res.style.animation = "fadeUp 0.5s ease both";
+      }
+    </script>
+  </body>
+</html>
