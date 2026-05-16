@@ -1100,5 +1100,31 @@
         res.style.animation = "fadeUp 0.5s ease both";
       }
     </script>
+
+    <script>
+      (function () {
+        function sendEvent() {
+          fetch("http://localhost:5000/track", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              app: "millionaire odds",
+              page: window.location.pathname,
+              referrer: document.referrer,
+              userAgent: navigator.userAgent,
+              timestamp: new Date().toISOString(), // better than raw Date.now()
+            }),
+          }).catch((err) => console.error("Analytics send failed:", err));
+        }
+
+        // fire on page load
+        sendEvent();
+
+        // optional: fire again on visibility changes (SPA or tab focus)
+        document.addEventListener("visibilitychange", () => {
+          if (!document.hidden) sendEvent();
+        });
+      })();
+    </script>
   </body>
 </html>
