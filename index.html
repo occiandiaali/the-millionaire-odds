@@ -1102,6 +1102,7 @@
     </script>
 
     <script>
+      // Suspended service by owner
       (function () {
         function sendEvent() {
           fetch("https://website-analytic-g3up.onrender.com/track", {
@@ -1118,12 +1119,12 @@
         }
 
         // fire on page load
-        sendEvent();
+        // sendEvent();
 
-        // optional: fire again on visibility changes (SPA or tab focus)
-        document.addEventListener("visibilitychange", () => {
-          if (!document.hidden) sendEvent();
-        });
+        // // optional: fire again on visibility changes (SPA or tab focus)
+        // document.addEventListener("visibilitychange", () => {
+        //   if (!document.hidden) sendEvent();
+        // });
       })();
     </script>
   </body>
