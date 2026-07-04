@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/assets/gold.svg" />
+    <link rel="icon" type="image/svg+xml" href="/public/images/gold.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -47,8 +47,8 @@
       content="https://millionaireodds.com/og-image.jpg"
     />
     <title>Millionaire Odds — Will You Be a Millionaire?</title>
-    <link rel="stylesheet" href="shared.css" />
-    <script src="theme.js"></script>
+    <link rel="stylesheet" href="/public/css/shared.css" />
+    <script src="/public/js/theme.js"></script>
     <style>
       /* ── Index-only styles ── */
       .form-card {
@@ -464,7 +464,7 @@
           </div>
 
           <div class="field">
-            <label>Country</label>
+            <label for="country">Country</label>
             <select id="country">
               <option value="">— Select —</option>
               <option value="us">United States</option>
@@ -484,7 +484,7 @@
           </div>
 
           <div class="field">
-            <label>Education</label>
+            <label for="education">Education</label>
             <select id="education">
               <option value="">— Select —</option>
               <option value="highschool">High School</option>
@@ -498,7 +498,7 @@
           </div>
 
           <div class="field">
-            <label>Field / Industry</label>
+            <label for="industry">Field / Industry</label>
             <select id="industry">
               <option value="">— Select —</option>
               <option value="tech">Technology</option>
@@ -517,7 +517,7 @@
           <div class="section-label">Financial Snapshot</div>
 
           <div class="field">
-            <label>Current Net Worth (USD)</label>
+            <label for="networth">Current Net Worth (USD)</label>
             <select id="networth">
               <option value="">— Select —</option>
               <option value="0">Under $0 (in debt)</option>
@@ -531,7 +531,7 @@
           </div>
 
           <div class="field">
-            <label>Annual Income (USD)</label>
+            <label for="income">Annual Income (USD)</label>
             <select id="income">
               <option value="">— Select —</option>
               <option value="1">Under $20k</option>
@@ -544,7 +544,7 @@
           </div>
 
           <div class="field full">
-            <label
+            <label for="savings"
               >Monthly Savings Rate —
               <span class="range-val" id="savingsVal">20%</span></label
             >
@@ -565,7 +565,7 @@
           <div class="section-label">Mindset &amp; Habits</div>
 
           <div class="field">
-            <label>Risk Tolerance</label>
+            <label for="risk">Risk Tolerance</label>
             <select id="risk">
               <option value="">— Select —</option>
               <option value="1">Very Low</option>
@@ -577,7 +577,7 @@
           </div>
 
           <div class="field">
-            <label>Entrepreneurial Intent</label>
+            <label for="entrepreneur">Entrepreneurial Intent</label>
             <select id="entrepreneur">
               <option value="">— Select —</option>
               <option value="1">None — happy with a job</option>
@@ -589,7 +589,7 @@
           </div>
 
           <div class="field">
-            <label>Investing Activity</label>
+            <label for="investing">Investing Activity</label>
             <select id="investing">
               <option value="">— Select —</option>
               <option value="1">None</option>
@@ -601,7 +601,7 @@
           </div>
 
           <div class="field">
-            <label>Financial Literacy</label>
+            <label for="literacy">Financial Literacy</label>
             <select id="literacy">
               <option value="">— Select —</option>
               <option value="1">Beginner</option>
@@ -613,7 +613,7 @@
           </div>
 
           <div class="field full">
-            <label
+            <label for="dependents"
               >Dependents (kids/family support) —
               <span class="range-val" id="depsVal">0</span></label
             >
@@ -632,7 +632,7 @@
           </div>
 
           <div class="field">
-            <label>Wealthy Mentor / Network</label>
+            <label for="network">Wealthy Mentor / Network</label>
             <select id="network">
               <option value="">— Select —</option>
               <option value="1">No access</option>
@@ -644,7 +644,7 @@
           </div>
 
           <div class="field">
-            <label>Family Wealth Background</label>
+            <label for="family>Family Wealth Background</label>
             <select id="family">
               <option value="">— Select —</option>
               <option value="1">Poverty</option>
