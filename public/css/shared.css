@@ -117,7 +117,7 @@ textarea,
   align-items: center;
   width: 100%;
   font-size: small;
-  border: solid 1px rgb(194, 193, 193);
+  /* border: solid 1px rgb(194, 193, 193); */
   padding: 1.5rem;
   border-radius: 6px;
 }
